@@ -1,0 +1,5 @@
+index.html
+	line 346,347
+
+js/app/detail.js
+	line 129

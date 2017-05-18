@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>DESENVOLVIMENTO</title>
+        <meta name="description" content="" />
+        <meta name="author" content="Focus" />
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link href="/library/styles/common.css" rel="stylesheet">        
+        <link href="css/styles.css" rel="stylesheet">
+		 <!--[if IE]>
+		 	<style type="text/css">
+		 		.s-one.qtd{height:16px;padding:9px 9px;}
+		 		input[type="text"][disabled]{background-color:#ebebe4;}
+
+		 	</style>
+		 	<script src="/library/jquery/jquery-1.10.1.min.js"></script>
+            <script src="/library/lib/spine/min.js"></script>        
+            <script src="/library/lib/require-jquery.js" data-main="js/app"></script>
+		 <![endif]-->
+		 		 
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <link href="css/iehack.css" rel="stylesheet">
+        <![endif]-->
+
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <!--[if IE 9]>
+        	<style type="text/css">	
+				span.count{font-size: 15pt;}
+				.simple-table tbody{position:absolute;width:977px;}
+				#wrap .button-box{position:absolute;bottom:0}
+			</style>
+		<![endif]-->
+    </head>
+    <body>
+        <div id="wrap" class="home hide">
+            <header>
+                <a href="detail.html" class="logo"></a>
+                <div class="user-box">
+                    <ul class="right-list">
+                        <li><a href="#" class="icon neat user-logout"></a></li>
+                        <li><a href="#" class="icon neat user-help"></a></li>
+                        <li><a href="#" class="icon neat user-mail"></a></li>
+                        <li><a href="#" class="icon neat user-order"></a></li>
+                    </ul>
+                    <br>
+                    <span class="user-name">Nome do Usuário</span>
+                </div>
+                <br />
+                <div class="mask">
+                    <img src="images/loader.gif" class="loader">
+                </div>
+                <div id="cart" class="hide">
+                    <div class="topbox">
+                        <h1>Carrinho 24h</h1><a href="#close" class="button bclose"></a>
+                    </div>
+                    <form class="cart-form">
+                        <label for="client">Cliente
+                            <input name="client" type="text" class="text s-two off" value="XXXXXX - Cliente" disabled/>
+                        </label>
+                        <label for="rep">Representante
+                            <input name="rep" type="text" class="text s-two off" value="XXXXXX - Representante" disabled/>
+                        </label>
+                    </form>
+                    <div id='tabs'>
+                        <ul class="tab-list">
+                            <li>
+                                <a href="#tabs-1" class="button unsel neat">Itens do Carrinho</a>
+                            </li>
+                            <li>
+                                <a href="#tabs-2" class="button unsel neat">Pré-Pedido 24h</a>
+                            </li>
+                            <li>
+                                <a href="#tabs-3" class="button unsel neat">Detalhe do Pré-Pedido <span class="tab-title">XXXXXX</span><span class="icon tab-close"></span></a>
+                            </li>
+                        </ul>
+                        <div class="tabs-1 hide">
+                            <div class="table">
+                                <table class="simple-table scrollTable">
+                                    <thead class="fixedHeader">
+                                        <tr>
+                                            <th>Remover</th><th>Descrição do Artigo</th><th>Código SAP</th><th>Unidade / Múltiplo</th><th>Quantidade</th>
+                                        </tr>
+                                    </thead><tbody class="scrollContent"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tabs-2 hide">
+                            <div class="table">
+                                <table class="simple-table scrollTable">
+                                    <thead class="fixedHeader cthree">
+                                        <tr>
+                                            <th>Detalhar</th><th>Pedido</th><th>Status do Pedido</th><th>Data/Hora</th>
+                                        </tr>
+                                    </thead><tbody class="scrollContent cthree"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tabs-3 hide">
+                            <form class="tab-form">
+                                <label for="codigo">Código do Pré-Pedido
+                                    <input name="codigo" type="text" class="text s-two off" value="XXXXXX - Cliente" disabled/>
+                                </label>
+                                <label for="status">Status do Pedido
+                                    <input name="status" type="text" class="text s-two off" value="XXXXXX - Representante" disabled/>
+                                </label>
+                                <label for="data">Data/Hora Emissão
+                                    <input name="data" type="text" class="text s-two off" value="XXXXXX - Representante" disabled/>
+                                </label>
+                            </form>
+                            <br />
+                            <div class="table">
+                                <table class="simple-table scrollTable">
+                                    <thead class="fixedHeader">
+                                        <tr>
+                                            <th>Selecionar</th><th>Descrição do Artigo</th><th>Código do Artigo</th><th>Unidade/Multiplo</th><th>Quantidade</th>
+                                        </tr>
+                                    </thead><tbody class="scrollContent"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-box">
+                        <a href="#" class="button addsel">Adicionar Itens Selecionados ao Carrinho</a>
+                        <a href="#" class="button send">Enviar Pré Pedido</a>
+                        <a href="#" class="button two back">Voltar para a Pesquisa</a>
+                        <a href="#" class="button two print hide">Imprimir</a>
+                    </div>
+                </div>
+                <form id="search">
+                    <div class="label">
+                        <label class="pre" for="search">Digite sua busca por: Nome, cor, base, composição, estampa...</label>
+                        <input name="search" type="text" class="text s-four" autocomplete="off" required/>
+                        <input type="submit" class="button s-quart neat bsearch" value="" />
+                        <a href="#tutorial" class="button unsel btutorial">O que é isso?</a>
+                    </div>
+                </form>
+                <dl id="spotlight">
+                </dl>
+                <a class="button bcart s-one-half" href="#carrinho">Carrinho de Compras</a><span class="button s-quart sel neat count">0</span>
+                <ul id="view" class="right-list topten">
+                    <li class="no-padding no-border">
+                        <a href="#list" class="button s-quart neat blist unsel"></a>
+                    </li>
+                    <li class="no-padding no-border">
+                        <a href="#images" class="button s-quart neat bimages sel"></a>
+                    </li>
+                </ul>
+                <div id="filter">
+                    <a class="button topten bfilter" href="#">Refinar Busca<span class="icon open-left"></span></a>
+                    <ul class="button-list topten hide">
+                        <li>
+                            <a href="#TECIMENTO" class="button unsel neat first">Tecimento</a>
+                        </li>
+                        <li>
+                            <a href="#BASE" class="button unsel neat">Base</a>
+                        </li>
+                        <li>
+                            <a href="#GRUPO" class="button unsel neat">Grupo</a>
+                        </li>
+                        <li>
+                            <a href="#SGRUPO" class="button unsel neat">Aspecto</a>
+                        </li>
+                        <li>
+                            <a href="#GRUPO_CORES" class="button unsel neat">Grupo de Cores</a>
+                        </li>
+                        <li>
+                            <a href="#CMP" class="button unsel neat">Composição</a>
+                        </li>
+                        <li>
+                            <a href="#MOTIVO_PADRAO" class="button unsel neat">Motivos</a>
+                        </li>
+                        <li>
+                            <a href="#MOTIVO_DETALHE" class="button unsel neat last">Detalhes</a>
+                        </li>
+                        <li>
+                            <a href="#" class="button s-quart neat bconfirm"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="button s-quart neat bcancel"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="button s-fifty neat sel bfclose"><span class="icon close-right"></span></a>
+                        </li>
+                    </ul>
+                    <ul class="filter-list hide"></ul>
+                </div>
+            </header>
+            <div class="bread-box">
+                <p class="bread-search">
+                    Resultados para: <span></span>
+                </p>
+                <p class="bread-count">
+                    Mostrando <span class="bread-page">0</span> de <span class="bread-total">0</span>
+                </p>
+            </div>
+            <div id="content">
+                <div class="table hide">
+                    <table class="simple-table scrollTable">
+                        <thead class="fixedHeader">
+                            <tr>
+                                <th>Carrinho</th><th>Descrição do Artigo</th><th>Código SAP</th><th>Grupo</th><th>Sub-Grupo</th>
+                            </tr>
+                        </thead><tbody class="scrollContent"></tbody>
+                    </table>
+                </div>
+            </div>
+            <footer>
+                <p>
+                    &copy; Copyright by Focus
+                </p>
+            </footer>
+        </div>
+        <div id="modal" class="hide">
+            <div class="modal-content">
+                <a href="#close" class="button bclose neat"></a>
+                <span class="big-icon"></span>
+                <div class="modal-text">
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <h1>Bem vindo ao tutorial do FOCUS 24h!</h1>
+                <div class="tut-view">
+                        <div class="tut-content">
+                        <div class="tut-box">
+                            <span class="tut-img"></span>
+                            <h2><span class="tut-number">1</span>Inicio</h2>
+                            <p></p>
+                        </div> 
+                        <div class="tut-box">
+                            <span class="tut-img"></span>
+                            <h2><span class="tut-number">1</span>Inicio</h2>
+                            <p></p>
+                        </div>
+                        <div class="tut-box">
+                            <span class="tut-img"></span>
+                            <h2><span class="tut-number">1</span>Inicio</h2>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pag-list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="tut-list">
+                    <li>Home</li>
+                    <li>Resultado</li>
+                    <li>Detalhe</li>
+                    <li>Carrinho</li>
+                    <li>Pré-Pedido</li>
+                </ul>
+            </div>
+        </div>
+        <div id="detail" class="hide">
+           <a href="#close" class="button bback unsel neat"></a>
+           <div class="info-back"></div>
+           <div class="info-box">
+               <a href="#" class="close-bar">
+                   <span class="icon bleft"></span>
+               </a>
+               <div class="info-main">
+                   <div class="info-top">
+                       <div class="info-text">
+                           <h1>NOME DO TECIDO</h1>
+                           <dl>
+                              <dt>Código do Artigo:</dt>
+                                <dd></dd>
+                              <dt>Composição:</dt>
+                                <dd></dd>
+                              <dt>Gramatura:</dt>
+                                <dd></dd>
+                              <dt>Largura Útil:</dt>
+                                <dd></dd>
+                              <dt>Grupo:</dt>
+                                <dd></dd>
+                              <dt>Sub-Grupo:</dt>
+                                <dd></dd>
+                              <dt>Book:</dt>
+                                <dd></dd>
+                           </dl>
+                       </div>
+                       <ul class="info-list">
+                           <li><a href="#" class="button s-quart neat unsel bicart"></a></li>
+                           <li><a href="#" class="button s-quart neat unsel bicolor"></a></li>
+                           <li><a href="#" class="button s-quart neat unsel disable birapport"></a></li>
+                           <li><a href="#" class="button s-quart neat unsel disable bimail"></a></li>
+                           <li><a href="#" class="button s-quart neat unsel disable bidown"></a></li>
+                       </ul>
+                   </div>
+                   <div class="info-text">
+                        <br />
+                        <dl>
+                          <dt>Instruções de Lavagem:</dt>
+                            <dd class="wash"></dd>
+                            <br />
+                          <dt>Utilização:</dt>
+                            <dd class="util"></dd>
+                            <br />
+                          <dt>Atributos:</dt>
+                            <dd></dd>
+                            <br />
+                          <dt>Características:</dt>
+                            <dd></dd>
+                            <br />
+                        </dl>
+                   </div>
+               </div>
+               <div class="info-side">
+                   <h3>Clique na cor desejada para visualizar o artigo</h3>
+                   <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                   <div class="viewport">
+                        <ul class="color-list overview"></ul>
+                   </div>
+                   <h4>A representação da cor pode variar conforme a regulagem do seu monitor, para maior exatidão, solicite uma amostra do tecido com um de nossos representantes.</h4>
+               </div>
+           </div>
+        </div>
+        <div id="alt-menu" class="hide">
+            <ul>
+                <li><a href="#order"><span class="icon neat user-order"></span>Pedidos 24h</a></li>
+                <li><a href="#mail"><span class="icon neat user-mail"></span>Falar com Representante</a></li>
+                <li><a href="#tutorial"><span class="icon neat user-help"></span>Como Navegar</a></li>
+                <li><a href="#logout"><span class="icon neat user-logout"></span>Sair</a></li>
+            </ul>
+        </div>
+        <!--[if !IE]><!-->
+        <script src="/library/jquery/jquery-1.10.1.min.js"></script>
+        <script src="/library/lib/spine/min.js"></script>        
+        <script src="/library/lib/require-jquery.js" data-main="js/app"></script>
+        <!--<![endif]-->
+    </body>
+</html>

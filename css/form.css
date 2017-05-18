@@ -1,0 +1,48 @@
+/*MAIN*/
+#wrap{padding-bottom:80px;}
+#wrap.client header{height:auto;z-index:999}
+#wrap .mask{margin-top:80px;}
+#wrap .notop{top: 0; z-index: 888}
+#main{position:absolute; width: 958px; border: 1px solid #CAD0D6; top: 115px; background:#FFF;}
+#wrap .toptitle{background-color:#eee; margin-top:5px;border: 1px solid #CAD0D6;}
+#wrap .toptitle h1{color:#ad1410; font-weight: 600; font-size:14pt;margin-left:20px}
+#main .topbox{float:left; width: 958px; background-color: #cbcbcb; height:40px; border: none;}
+#main .topbox h1{color: #000; font-size: 13pt;margin:2px 0 0 20px; font-weight: 600}
+#main .inside{margin: 20px 0 10px -20px;}
+#main label{float:left; padding: 0; line-height:14pt; margin:10px 40px 0 0; font-weight: 600;color:#3f3f3f}
+#main label span{position: absolute;}
+#main label.list{margin: 10px 30px 0 0;}
+#main label.last{margin: 10px 20px 0 0;}
+#main label.lost{margin: 10px 0 0 0;}
+#main label span{font-weight: normal; font-size: 9pt; color:#8A9199; margin-left: 10px;}
+#main form{float:left; margin:10px 20px; padding:0; width: 918px;}
+#main .text{margin:2px 0; width: inherit;font-weight: 300; color:#8b8b8b}
+#main .prompt{width: 140px; margin-top:0;}
+#main .bprompt{background-position: -80px -431px; width: 20px;}
+#main .disable{box-shadow:none; border-color:#ccc;height:20px}
+#main .bigger{width: 160px; margin-top:0;}
+#main .state{width: 75px; margin-top:0; text-transform: uppercase;}
+#main .bsearch{float: left; margin-left: 0px;}
+#main input{font-weight: normal}
+#main input.button{margin-top:20px; padding: 9px 19px;}
+#main label.error{position: absolute; margin: 32px 0 0 90px; color: red; left: 0; font-weight: normal; display: none;}
+#main p{border: 1px solid #CCC; margin: 48px 40px 20px 40px; padding: 20px; background-color: #f0f2f3;}
+#main .right{margin-right: 40px;}
+
+
+#main .combo{position: absolute; z-index: 999; margin-top:40px; display: none;border: 1px solid #aaa;}
+#main .combo-content{height:200px; top: -2px; background:#fcfbfb;}
+#main .viewport{height:200px; overflow:hidden; top: 0; position:relative;border-right:1px solid #cbcbcb}
+#main .overview{list-style:none; position:absolute; left:0; top:0;}
+#main .thumb .end,
+#main .thumb{background-color:#535353; -webkit-box-shadow: #000 0px 1px 1px; -moz-box-shadow: #000 0px 1px 1px;box-shadow: #000 0px 1px 1px;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;}
+#main .scrollbar{position:relative; float:right; width:22px;}
+#main .track{background-color:#f1f1f1; height:100%; width:20px; position:absolute; padding:0 1px;}
+#main .thumb{height:20px; width:20px; cursor:pointer; overflow:hidden; position:absolute; top:0}
+#main .thumb .end{overflow:hidden; width:20px}
+#main  form .send{float: right; position: relative; top: 10px;}
+#main  form .cancel{float: right; position: relative; top: 10px;border:none}
+
+.combo-list{padding-bottom: 2px;color:#535353;}
+.combo-list li{float:left; padding: 2px 20px; width: 100%; height:30px;line-height:30px; font-weight: normal; cursor: pointer;}
+.combo-list li:hover{background: #cbcbca; color: #000 }

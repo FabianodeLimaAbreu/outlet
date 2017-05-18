@@ -1,0 +1,42 @@
+body{font:normal 400 11pt Helvetica,sans-serif; color:#666;}
+.fake #wrap{background: none;}
+
+/*Modal*/
+#modal .modal-content{position:absolute; z-index:999; background-color:#F2F3F5; border:1px solid #d0d0d0; width: 360px; height: 100px; left: 50%; margin-left: -200px; top:240px;}
+
+/*INPUTS*/ 
+.text{height:28px;padding:10px 9px 0;}
+input[name="qtd"][disabled]{line-height:28px;}
+
+
+/*LISTS*/
+.color-list{margin: 10px 8px;}
+
+/*TABLES*/
+.simple-table tbody{position:absolute;width:960px;}
+.tableContainer{clear:both;border-bottom:1px solid #dfe0e1;height:440px;overflow:auto;width:960px}
+
+/*BUTTONS*/ 
+.button{min-width: 20px;}
+.button-box{position:absolute;bottom:0;}
+
+/*DETAIL*/
+#detail h4{width:380px;}
+
+/*SIZES*/
+.neat{margin:0;}
+.no-padding, li.no-padding{padding:0}
+.align-left{text-align: left; float: left;}
+.topten{margin-top: 10px}
+.no-border, li.no-border{border:none; outline:none;}
+.off{color: #CCC}
+
+#modal.tutorial .tut-number{float: left; width: 16px; height: 16px; background:#2E7DC7; margin-left: -26px; font-size: 9pt; line-height: 13pt; text-align: center; color: #FFF;}
+#cart{min-height:400px;}
+#modal .modal-text{float: left; margin-left: 10px; width: 250px;}
+#modal .modal-content{position:absolute; z-index:999; background-color:#F2F3F5; border:1px solid #d0d0d0; width: 360px; min-height: 115px; left: 50%; margin-left: -200px; top:240px; padding: 40px;}
+
+.tut-list li{font-size:12pt;}
+
+.button-list .bfclose{height:19px}
+.button-list .first,.button-list .last{padding:9px 14px 10px 14px;}

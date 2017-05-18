@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>DESENVOLVIMENTO</title>
+        <meta name="description" content="" />
+        <meta name="author" content="Focus" />
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,300' rel='stylesheet' type='text/css'>        
+        <link href="/library/styles/common.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/form.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <link href="css/iehack.css" rel="stylesheet">
+        <![endif]-->
+		 <!--[if IE]>
+		 	<style type="text/css">
+		 		.topten{margin-top: 30px;right:35px}
+		 		.s-one.qtd{height:16px;padding:9px 9px;}
+		 		input[type="text"][disabled]{background-color:#ebebe4;}
+		 	</style>
+		 	<script src="/library/jquery/jquery-1.10.1.min.js"></script>
+            <script src="/library/lib/spine/min.js"></script>        
+            <script src="/library/lib/require-jquery.js" data-main="js/app"></script>
+		 <![endif]-->
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <!--[if IE 9]>
+        	<style type="text/css">
+        		.scrollContent{display:block;height:400px;overflow:scroll;width:9;border:1px solid #dfe0e1; border-top: none; overflow-x: hidden;width:960px;}
+        		#modal.tutorial .tut-number{line-height: 11pt}
+				.simple-table tbody{position:absolute;width:977px;}
+				#wrap .button-box{position:absolute;bottom:0}
+				.button-list .first{padding-left: 18px}
+				.button-list .last{padding-right: 18px}
+			</style>
+		<![endif]-->
+    </head>
+    <body>
+        <div id="wrap">
+            <header class="client">
+				<div class="holder">
+					<a href="./" class="logo"></a>
+					<br>
+					<div class="toptitle">
+						<h1>Cadastro de Clientes</h1>
+					</div>
+				</div>
+			</header>
+            <div class="mask notop">
+                <img src="images/loader.gif" class="loader">
+            </div>
+            <div id="main">
+                <div class="topbox">
+                    <h1>Cliente</h1>
+                </div>
+                <form autocomplete="off">
+                	<label for="cnpj" class="s-one-half">CNPJ<span>sem pontos ou traços</span>
+                        <input name="cnpj" type="text" class="text cnpj" value="" maxlength="18"/>
+                    </label>
+                    <label for="razao" class="s-two-more">Razão Social
+                        <input name="razao" type="text" class="text s-three" value=""/>
+                    </label>
+                    <label for="ie" class="s-more list">IE
+                        <input name="ie" type="text" class="text insc"/>
+                    </label>
+                    <label for="isento" class="s-quart lost">Isento
+                        <span class="icon select-cart neat topten"></span>
+                        <input name="isento" type="hidden" class="text isento"/>
+                    </label>
+                    <label for="cep" class="s-one-prompt last">CEP<br>
+                        <input name="cep" type="text" class="text cep prompt" value="" maxlength="9"/>
+                        <a href="#" class="button bsearch neat notradius"></a>
+                    </label>
+                    <label for="rua" class="s-two">Rua
+                        <input name="rua" type="text" class="text s-three" value="" readonly/>
+                    </label>
+                    <label for="numero" class="s-mhalf">Número
+                        <input name="numero" type="text" class="text"/>
+                    </label>
+                    <label for="complemento" class="s-one-prompt last">Complemento
+                        <input name="complemento" type="text" class="text" maxlength="20"/>
+                    </label>
+                    
+                    <label for="bairro" class="s-one-half">Bairro
+                        <input name="bairro" type="text" class="text" value=""  maxlength="70" readonly/>
+                    </label>
+                    <label for="cidade" class="s-two">Cidade
+                        <input name="cidade" type="text" class="text" value=""  maxlength="70" readonly/>
+                    </label>
+                    <label for="estado" class="s-mone last">Estado<br>
+                        <input name="none" type="text" class="text combo-input state" disabled/>
+                        <input name="estado" class="fake-input" type="hidden"/>
+                        <a href="#" class="button bprompt neat notradius"></a>
+                        <div class="combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list overview"></ul>
+                            </div>
+                        </div>
+                    </label>
+                    <label for="pais" class="s-one-bigger lost">País<br>
+                        <input name="none" type="text" class="text combo-input bigger" value="" disabled/>
+                        <input name="pais" class="fake-input" type="hidden"/>
+                        <a href="#" class="button bprompt neat notradius"></a>
+                        <div class="combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list overview"></ul>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="topbox inside">
+                        <h1>Contato</h1>
+                    </div>
+                    <label for="nome" class="s-two-half">Nome
+                        <input name="nome" type="text" class="text" value="" maxlength="80"/>
+                    </label>
+                    <label for="sobrenome" class="s-two-half lost">Sobrenome
+                        <input name="sobrenome" type="text" class="text" value="" maxlength="80"/>
+                    </label>
+                    <label for="email" class="s-two-half">E-Mail
+                        <input name="email" type="text" class="text" value=""/>
+                    </label>
+                    <label for="ddd1" class="s-half list">Telefone
+                        <input name="ddd1" type="text" class="text" value="" maxlength="3"/>
+                    </label>
+                    <label for="telefone1" class="s-mhalf">1
+                        <input name="telefone1" type="text" class="text" value="" maxlength="9"/>
+                    </label>
+                    <label for="ddd2" class="s-half list">Telefone
+                        <input name="ddd2" type="text" class="text" value="" maxlength="3"/>
+                    </label>
+                    <label for="telefone2" class="s-mhalf lost">2
+                        <input name="telefone2" type="text" class="text" value="" maxlength="9"/>
+                    </label>
+                    <label for="senha" class="s-one-prompt">Senha
+                        <input name="senha" type="password" class="text"  maxlength="20" value=""/>
+                    </label>
+                    <label for="csenha" class="s-one-half">Confirmar Senha
+                        <input name="csenha" type="password" class="text"  maxlength="20" value=""/>
+                    </label>
+                    <input type="submit" class="button send" value="Enviar" />
+                    <input type="button" class="button two cancel" value="Cancelar" />
+                </form>
+            </div>
+            <footer>
+                <p>
+                    &copy; Copyright Focus Têxtil
+                </p>
+            </footer>
+            <div id="modal" class="hide">
+                <div class="modal-content">
+                    <a href="#close" class="button bclose neat"></a>
+                    <span class="big-icon"></span>
+                    <div class="modal-text">
+                        <h2></h2>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/library/jquery/jquery-1.10.1.min.js"></script>
+        <script src="/library/lib/spine/min.js"></script>        
+        <script src="/library/lib/require-jquery.js" data-main="js/insert"></script>        
+    </body>
+</html>
