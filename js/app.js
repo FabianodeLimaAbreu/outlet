@@ -13,7 +13,7 @@ require.config({
     }
 });
 require("methods sp/min app/filter app/content app/detail app/cart".split(" "), function() {
-    window.App = Spine.Controller.sub({
+    window.App = Spine.Controller.sub({ 
         el : $("body"),
         elements : {
             "#search" : "searchEl",
@@ -53,6 +53,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             this.data = [];
             this.fdata = [];
             this.cartlist = [];
+            this.group="";
             this.loading = !0;
             this.tutpage = 0;
             this.pt = 0;
@@ -81,9 +82,9 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             this.el.find("#wrap").removeClass("hide");
             this.searchEl.fadeIn().labelOver("over");
             /***** BLACK WEEK CODE ***/
-            $.getJSON("/library/ajax/blackweek.js", this.proxy(function(a) {
+            /*$.getJSON("/library/ajax/blackweek.js", this.proxy(function(a) {
                 this.blackweek = a;
-            }));
+            }));*/
             /***** END BLACK WEEK CODE ***/
             this.modal = new Modal({
                 el : this.modalEl
@@ -163,10 +164,28 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
                     $("#cart").hide();
                     if (!this.loading) {
                         this.reset();
-                        this.start();
+                        this.openGroupMenu();
+                        //this.start();
                     }
                 }
             });
+        },
+        openGroupMenu : function(){
+            //http://ii3/services/Services/SearchMaterial.svc/OutletGroup/
+            if (this.loading) {
+                return !1;
+            }
+            $.getJSON(nodePath + "service=SearchMaterial.svc/OutletGroup/&query=?callback=?", this.proxy(this.createGroupMenu)).fail(function() {
+                console.log("second success");
+            }).fail(function() {
+                console.log("error");
+            }).always(function() {
+                console.log("complete");
+            });
+        },
+        createGroupMenu : function(a,b){
+            console.dir(a);
+            this.group="Tules";
         },
         start : function() {
             if (this.loading) {
@@ -193,6 +212,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             this.searchEl.find(".text").val("").blur();
             this.data = [];
             this.fdata = [];
+            this.group="";
             if ("object" === typeof this.active) {
                 var a = this.active.el.attr('id');
                 typeof this[a].close !== 'undefined' && this[a].close();
@@ -224,7 +244,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             b = a.removeAccents().capitalize().replace(/\s/g, '');
             
             this.breadEl.find(".bread-search").show();
-            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query=" + a.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email + "?callback=?", this.proxy(this.setdata)).done(function() {
+            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+this.group+" "+ a.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email + "?callback=?", this.proxy(this.setdata)).done(function() {
                 console.log("second success");
             }).fail(function() {
                 console.log("error");

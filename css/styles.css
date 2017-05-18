@@ -145,7 +145,7 @@ ul li{float:left}
 
 .button-list{position:absolute; left:130px; width: 740px; height: 40px; font-weight: 300;}
 .button-list .unsel{border-radius:0;}
-.button-list .unsel, .button-list .sel{border:1px solid #c4c7c9; color:#53534b; border-left:none; border-right:none; padding:10px 7px 9px 7px;box-shadow:none;}
+.button-list .unsel, .button-list .sel{border:1px solid #c4c7c9; color:#53534b; border-left:none; border-right:none; padding:10px 11px 9px 12px;box-shadow:none;}
 .button-list .sel{border-radius: 3px; color: #FFF; }
 .button-list .s-fifty{width: 10px; padding: 9px 0;}
 .button-list .first{padding-left: 15px;}
