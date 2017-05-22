@@ -31,7 +31,10 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             "#wrap .mask" : "maskEl",
             "#wrap .bcart" : "cartBt",
             "#wrap .count" : "countBt",
-            ".order-box":"order_box"
+            ".order-box":"order_box",
+            ".menu-modal": "group_modal",
+            ".group-menu":"group_menu",
+            ".expression": "group_selected"
         },
         events : {
             "submit #search" : "submit",
@@ -45,7 +48,9 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             "click #wrap .user-order" : "opencart",
             "click #view a" : "changeview",
             "click .order-box a":"sortItems",
-            "click .closeie":"closeIe"
+            "click .closeie":"closeIe",
+            "click .group-menu .group_menu_item":"selectGroup",
+            "click .groups":"openGroupMenu"
         },
         init : function() {
             this.usr = {};
@@ -170,11 +175,15 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
                 }
             });
         },
-        openGroupMenu : function(){
+        openGroupMenu : function(evt){
+            if ("object" === typeof evt) {
+                evt.preventDefault();
+            }
             //http://ii3/services/Services/SearchMaterial.svc/OutletGroup/
             if (this.loading) {
                 return !1;
             }
+            this.getloading(!0);
             $.getJSON(nodePath + "service=SearchMaterial.svc/OutletGroup/&query=?callback=?", this.proxy(this.createGroupMenu)).fail(function() {
                 console.log("second success");
             }).fail(function() {
@@ -184,24 +193,42 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             });
         },
         createGroupMenu : function(a,b){
-            console.dir(a);
-            this.group="Tules";
+            var html="";
+            for(var i=0;i<a.length;i++){
+                console.log(a[i]);
+                html+="<li><button type='button' name='"+a[i]+"' class='group_menu_item'>"+a[i]+"</button></li>";
+            }
+            this.group_menu.html(html);
+            this.group_modal.fadeIn();
+            this.getloading(!1);
         },
-        start : function() {
+        selectGroup : function(evt){
+            evt.preventDefault();
+            this.reset();
+            this.group=$(evt.target).attr("name");
+            this.group_selected.text(this.group);
+            this.start(this.group);
+            this.group_modal.fadeOut();
+            this.breadEl.find(".bread-search").hide();
+        },
+        /*closeGroupMenu : function(evt){
+            evt.preventDefault();
+            this.group_menu.html(html).fadeOut();
+        },*/
+        start : function(val) {
             if (this.loading) {
                 return !1;
             }
             this.breadarr = [];
             this.getloading(!0);
-            console.log(nodePath + "service=SearchMaterial.svc/outlet/&query=x?callback=?");
-            $.getJSON(nodePath + "service=SearchMaterial.svc/outlet/&query=x?callback=?", this.proxy(this.setdata)).fail(function() {
+            console.log(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+val.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email +"?callback=?");
+            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+val.removeAccents().initialCaps().replace(" de "," ")+ "/" + this.usr.CNPJ + "/" + this.usr.Email +"?callback=?", this.proxy(this.setdata)).fail(function() {
                 console.log("second success");
             }).fail(function() {
                 console.log("error");
             }).always(function() {
                 console.log("complete");
             });
-            this.breadEl.find(".bread-search").hide();
             return !1;
         },
         reset : function(a) {
@@ -244,7 +271,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             b = a.removeAccents().capitalize().replace(/\s/g, '');
             
             this.breadEl.find(".bread-search").show();
-            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+this.group+" "+ a.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email + "?callback=?", this.proxy(this.setdata)).done(function() {
+            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+this.group.removeAccents().initialCaps().replace(" de "," ") +" "+ a.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email + "?callback=?", this.proxy(this.setdata)).done(function() {
                 console.log("second success");
             }).fail(function() {
                 console.log("error");

@@ -52,7 +52,7 @@ body.noscroll{position: fixed; overflow: hidden; width: 100%;}
 #search.search-disabled .bsearch{display: none;}
 
 #filter{position: absolute; top: 130px; width:835px;}
-#view{position: relative; top: 16px;}
+#view{position: relative; top: 6px;}
 #content{float: left; width: 960px; min-height: 400px; padding-bottom: 40px; margin-top: 230px;}
 #tabs{float:left; margin-top: -70px;}
 
@@ -72,9 +72,9 @@ li.order span {background-position: -90px -448px;min-width:20px;margin-top: 2px;
 
 
 /*SPOTLIGHT*/
-#spotlight{position: absolute; top: 130px; left: 50%; margin-left: -470px; z-index: 999; width: 690px; height: auto; border: 1px solid #CCC; border-top: none; background: #f8f8f8; display: none;  font-size: 10pt;}
+#spotlight{position: absolute; top: 130px; left: 50%; margin-left: -470px; z-index: 999; width: 645px; height: auto; border: 1px solid #CCC; border-top: none; background: #f8f8f8; display: none;  font-size: 10pt;}
 #spotlight dt{position:relative; float: left; clear: left; font-weight: 400; width: 120px; height: 86px; padding: 5px 10px 2px; background: #ededed; color:#666; border-right: 1px solid #CCC;}
-#spotlight dd{position:relative; float: left; width: 528px; color:#999; padding: 5px 10px 4px; line-height: 18px; cursor: pointer;font-weight: 300;}
+#spotlight dd{position:relative; float: left; width: 483px; color:#999; padding: 5px 10px 4px; line-height: 18px; cursor: pointer;font-weight: 300;}
 #spotlight dd:hover, #spotlight dd.sel, #spotlight dd:focus{background: #535353; color: #FFF;}
 
 /*MODAL*/
@@ -361,6 +361,7 @@ a.button.bfilter{padding-left: 15px;}
 .s-three{width: 450px;}
 .s-four{width: 672px;}
 .s-full{width: 940px; margin: 0;}
+.s-90{width:90px;}
 
 /*BOX*/
 .box{}
@@ -567,3 +568,88 @@ div.content p{line-height:140%;float:left;font-size:16px;margin-top:15px;margin-
 div.content a{margin-top:20px;text-decoration:none;margin-left:30px;float:left;background:url(../images/gui-ie.png);background-position:0 -190px;width:340px;height:40px}
 div.content a:hover{background-position:0 -230px}
 div.content a p{margin-left:10px;margin-top:10px;text-align:center;color:#fff}
+
+.menu-modal{
+	width: 100%;
+	height: 100%;
+	background: url(../images/modalbackground.png);
+	position: absolute;
+	top: 0;
+	z-index:999;
+	display: none;
+}
+.menu-container{
+	width: 440px;
+	height: 406px;
+	background: #434343;
+	left:50%;
+	top:50%;
+	margin: -190px 0 0 -204px;
+	position: absolute;
+	border-radius: 5px;
+	border: 1px solid black;
+	color:white;
+}
+.menu-container h3{
+	font-size: 20px;
+	line-height: 70px;
+	position: relative;
+	float: left;
+	text-align: center;
+	width: 100%;
+}
+.menu-container ul{
+	float: left;	
+	position: relative;
+	width: 100%;
+	height: 334px;
+}
+.menu-container ul li{
+	float: left;
+	border: 1px solid black;
+	position:relative;
+	width: 218px;
+	height: 40px;
+	background:#656565;
+	border-radius: 3px;
+}
+.menu-container ul li:hover,.menu-container ul li.active{
+	background:#434343;
+}
+.menu-container ul li button{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: none;
+	border: 0;
+	color:white;
+	font-size: 15px;
+	font-weight: 300;
+}
+.groups{
+	font-size: 14px;
+	text-align: center;
+}
+.expression{    
+	width:auto;
+	min-width: 185px;
+	padding: 0 10px;
+    height: 38px;
+	display: block;
+	position: relative;
+	float: left;
+	border-radius: 3px;
+    border: 1px solid #CAD0D6;
+    background: white;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 600;
+    line-height: 38px;
+}
+
+.group_menu_item{cursor: pointer;}
+
+
+
+
+

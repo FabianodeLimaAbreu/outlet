@@ -46,6 +46,29 @@
 		<![endif]-->
     </head>
     <body>
+        <div class="menu-modal">
+            <div class="menu-container">
+                <h3>Clique em um grupo para começar </h3>
+                <ul class="group-menu">
+                    <li><button type="button" class="group_menu_item">Acetinados</button></li>
+                    <li><button type="button" class="group_menu_item">Aspectos de Couro</button></li>
+                    <li><button type="button" class="group_menu_item">Aspectos Naturais Leves</button></li>
+                    <li><button type="button" class="group_menu_item">Aspectos Naturais Pesados</button></li>
+                    <li><button type="button" class="group_menu_item">Jeanswear Flex</button></li>
+                    <li><button type="button" class="group_menu_item">Malhas Médias</button></li>
+                    <li><button type="button" class="group_menu_item">Paêtes</button></li>
+                    <li><button type="button" class="group_menu_item">Tecnológicos</button></li>
+                    <li><button type="button" class="group_menu_item">Alfaiatarias</button></li>
+                    <li><button type="button" class="group_menu_item">Aspectos de Linho</button></li>
+                    <li><button type="button" class="group_menu_item">Aspectos Naturais Médios</button></li>
+                    <li><button type="button" class="group_menu_item">Jeanswear Fix</button></li>
+                    <li><button type="button" class="group_menu_item">Malhas leves</button></li>
+                    <li><button type="button" class="group_menu_item">Malhas Pesadas</button></li>
+                    <li><button type="button" class="group_menu_item">Rendas</button></li>
+                    <li><button type="button" class="group_menu_item">Transparências</button></li>
+                </ul>
+            </div>
+        </div>
         <div id="wrap" class="hide">
             <header>
                 <div class="holder">
@@ -59,13 +82,15 @@
                             <li><a href="#carrinho" class="icon neat user-cart" title="carrinho"></a></li>
                         </ul>
                         <br>
-                        <span class="user-name">Nome do Usuário</span>
+                        <span class="user-name">Nome do Usuário</span>  
                     </div>
                     <br />
                     <form id="search">
                         <div class="label">
-                            <label class="pre" for="search">Digite sua busca por: Nome, cor, base, composição, estampa...</label>
-                            <input name="search" type="text" class="text s-four" autocomplete="off" required/>
+                            <button type="button" class="button s-90 groups">Grupos</button>
+                            <span class="expression">Nenhum</span>
+<!--                             <label class="pre" for="search">Digite sua busca por: Nome, cor, base...</label> -->
+                            <input name="search" placeholder="Digite sua busca por: Nome, cor, base..." type="text" class="text s-two" autocomplete="off" required/>
                             <input type="submit" class="button s-quart neat bsearch notradius" value="" />
                             <a href="#tutorial" class="button btutorial">O que é isso?</a>
                         </div>
