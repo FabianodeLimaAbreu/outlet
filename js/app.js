@@ -59,6 +59,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             this.fdata = [];
             this.cartlist = [];
             this.group="";
+            this.g_opened=!0;
             this.loading = !0;
             this.tutpage = 0;
             this.pt = 0;
@@ -184,6 +185,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
                 return !1;
             }
             this.getloading(!0);
+            this.g_opened=!0;
             $.getJSON(nodePath + "service=SearchMaterial.svc/OutletGroup/&query=?callback=?", this.proxy(this.createGroupMenu)).fail(function() {
                 console.log("second success");
             }).fail(function() {
@@ -196,19 +198,22 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             var html="";
             for(var i=0;i<a.length;i++){
                 console.log(a[i]);
-                html+="<li><button type='button' name='"+a[i]+"' class='group_menu_item'>"+a[i]+"</button></li>";
+                html+="<li><button type='button' name='"+a[i].capitalize()  +"' class='group_menu_item'>"+a[i].capitalize()+"</button></li>";
             }
             this.group_menu.html(html);
             this.group_modal.fadeIn();
-            this.getloading(!1);
+            //this.getloading(!1);
         },
         selectGroup : function(evt){
             evt.preventDefault();
             this.reset();
             this.group=$(evt.target).attr("name");
             this.group_selected.text(this.group);
+            this.searchEl.removeClass("big");
+            this.getloading(!1);
             this.start(this.group);
             this.group_modal.fadeOut();
+            this.g_opened=!1;
             this.breadEl.find(".bread-search").hide();
         },
         /*closeGroupMenu : function(evt){
@@ -249,10 +254,14 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             a.preventDefault();
             a = arrayObject($(a.target).serializeArray());
             a=a.search;
-            if (this.loading || !a) {
+            if ((this.loading || !a) && !this.g_opened) {
                 return !1;
             }
+            this.group=[];
             this.breadarr = [];
+            this.group_selected.text("");
+            this.group_modal.fadeOut();
+            this.searchEl.addClass("big");
             if(-1 !== a.removeAccents().capitalize().indexOf(",") || -1 !== a.removeAccents().capitalize().indexOf(".")){
               //Caso tenha , na busca
               if(-1 !== a.removeAccents().capitalize().indexOf("Veludo")){
@@ -271,7 +280,7 @@ require("methods sp/min app/filter app/content app/detail app/cart".split(" "), 
             b = a.removeAccents().capitalize().replace(/\s/g, '');
             
             this.breadEl.find(".bread-search").show();
-            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+this.group.removeAccents().initialCaps().replace(" de "," ") +" "+ a.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email + "?callback=?", this.proxy(this.setdata)).done(function() {
+            $.getJSON(nodePath + "service=SearchMaterial.svc/searchOutlet/&query="+ a.removeAccents().initialCaps().replace(" de "," ") + "/" + this.usr.CNPJ + "/" + this.usr.Email + "?callback=?", this.proxy(this.setdata)).done(function() {
                 console.log("second success");
             }).fail(function() {
                 console.log("error");
